@@ -36,3 +36,11 @@ const teamMembers = [
     img: "img/female3.png"
   }
 ];
+
+//definizione della funzione che mi genera la struttura delle card
+const generateCard = (member) => {
+
+}
+
+//recupero elementi dal dom
+const cardsContainer = document.getElementById('cardsTeam');
