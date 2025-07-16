@@ -39,23 +39,27 @@ const teamMembers = [
 
 //definizione della funzione che mi genera la struttura delle card
 const generateCard = (member) => {
+
+  //destrutturo l'oggetto per usare le variabili da esso generate
+  const {img, name, role, email} = member;
+
   //creo una variabile che conterrà l'html e le informazioni della card
   const memberCard = ` <div class="col-12 col-md-4 gy-4">
           <div class="card" mb-3" style="max-width: 540px">
             <div class="row g-0">
               <div class="col-md-4">
-                <img src= "assets/${member.img}" class="img-fluid rounded-start" alt="..." />
+                <img src="${img.startsWith('http') ? img : `assets/${img}`}" class="img-fluid rounded-start" alt="..." />
 
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">${member.name}</h5>
+                  <h5 class="card-title">${name}</h5>
                   <p class="card-text">
-                   ${member.role}
+                   ${role}
                   </p>
                   <p class="card-text">
                     <small class="text-body-secondary"
-                      >${member.email}
+                      >${email}
                     
                   </p>
                 </div>
@@ -83,6 +87,10 @@ const addMember = document.getElementById('add-member');
 
 addMember.addEventListener('click', function(e) {
   e.preventDefault();
+
+  //svuoto il container prima di recuperare i dati del nuovo membro del team
+  cardsContainer.innerHTML = '';
+
   //recupero i valori inseriti nella form dall'utente
   const name = document.getElementById('name').value;
   const role = document.getElementById('role').value;
