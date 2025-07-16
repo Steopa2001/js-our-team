@@ -67,12 +67,53 @@ const generateCard = (member) => {
   return memberCard;
 };
 
-//recupero elementi dal dom
-const cardsContainer = document.getElementById("cardsTeam");
-
-//richiamo la funzione per creare la card con le info dell'elemento attualmente ciclato
+//definizione della funzione che mi renderizza le card
+const renderCards = () => {
+  //richiamo la funzione per creare la card con le info dell'elemento attualmente ciclato
 for (let i = 0; i < teamMembers.length; i++) {
   let card = generateCard(teamMembers[i]);
 
   cardsContainer.innerHTML += card;
 }
+};
+
+//recupero elementi dal dom
+const cardsContainer = document.getElementById("cardsTeam");
+const addMember = document.getElementById('add-member');
+
+addMember.addEventListener('click', function(e) {
+  e.preventDefault();
+  //recupero i valori inseriti nella form dall'utente
+  const name = document.getElementById('name').value;
+  const role = document.getElementById('role').value;
+  const email = document.getElementById('email').value;
+  const img = document.getElementById('img').value;
+
+  //verifico la consistenza dei dati
+  if(name == '' || role == '' || img == '') {
+    alert('Tutti i campi sono obbligatori!');
+    return;
+  };
+
+
+  //creo nuovo oggetto che rappresenta il nuovo membro del team
+  const newMember = {
+    name,
+    role,
+    email,
+    img
+  };
+  
+  //pusho il nuovo oggetto nell'array
+  teamMembers.push(newMember);
+
+  //svuoto i campi della form
+  document.getElementById('name').value = '';
+  document.getElementById('role').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('img').value = '';
+
+  renderCards();
+});
+
+  renderCards();
