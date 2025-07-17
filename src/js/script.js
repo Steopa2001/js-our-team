@@ -45,7 +45,7 @@ const generateCard = (member) => {
 
   //creo una variabile che conterrà l'html e le informazioni della card
   const memberCard = ` <div class="col-12 col-md-4 gy-4">
-          <div class="card" mb-3" style="max-width: 540px">
+          <div class="card text-bg-dark" mb-3" style="max-width: 540px">
             <div class="row g-0">
               <div class="col-md-4">
                 <img src="${img.startsWith('http') ? img : `assets/${img}`}" class="img-fluid rounded-start img-adapt w-100" alt="..." />
@@ -58,8 +58,7 @@ const generateCard = (member) => {
                    ${role}
                   </p>
                   <p class="card-text">
-                    <small class="text-body-secondary"
-                      >${email}
+                    <small class="text-info">${email}</small>
                     
                   </p>
                 </div>

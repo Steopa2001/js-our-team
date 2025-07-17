@@ -8,3 +8,11 @@ body {
     object-fit: cover;
 }
 
+.bg-color{
+    background-color: 000000;
+}
+
+h1 {
+    color: red;
+}
+
